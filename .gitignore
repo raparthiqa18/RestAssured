@@ -1,0 +1,6 @@
+# ignore all logs
+*.log
+*.idea/vcs.xml
+index.html
+/target
+/test-output

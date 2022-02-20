@@ -1,0 +1,5 @@
+Run below command in cmd in the path where the db.json file is saved (C:\JSON)
+json-server --watch db.json
+
+Access JSON server using http://localhost:3000/
+

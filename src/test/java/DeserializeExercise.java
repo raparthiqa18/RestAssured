@@ -20,7 +20,7 @@ public class DeserializeExercise {
         UsersPojo usersPojo=Response.getBody().as(UsersPojo.class);
         System.out.println(usersPojo.getPer_page());
 
-//        Response.body(matchesJsonSchemaClasspath("apiusers.json"));
+        System.out.println(usersPojo.getData().get(0).getEmail());
 
     }
 }

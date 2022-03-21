@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseOptions;
 import utilities.RestassuredExtensions;
@@ -22,6 +23,27 @@ public class GETPoststeps {
 
 
     public static class MyStepdefs {
+
+
+        @Given("I login to PayMe application")
+        public void iLoginToPayMeApplication() {
+
+        }
+
+        @When("I search for consumer using {string}")
+        public void iSearchForConsumerUsing(String arg0) {
+
+        }
+
+        @Then("I want to check if the consumer is found")
+        public void iWantToCheckIfTheConsumerIsFound() {
+
+        }
+
+        @And("Validate if the consumer status is {string}")
+        public void validateIfTheConsumerStatusIs(String arg0) {
+        }
+
 
         @Given("I perform GET operation for {string}")
         public void iPerformGETOperationFor(String url) {

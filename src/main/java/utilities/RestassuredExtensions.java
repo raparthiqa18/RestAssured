@@ -12,20 +12,43 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.request;
 
 public class RestassuredExtensions {
     public static RequestSpecification Request;
+    public static ResponseOptions<Response> response;
 
     public RestassuredExtensions(){
         //Arrange
         RequestSpecBuilder requestSpecBuilder=new RequestSpecBuilder();
-        requestSpecBuilder.setBaseUri("http://localhost:3000");
+//        requestSpecBuilder.setBaseUri("http://localhost:3000");
+        requestSpecBuilder.setBaseUri("https://reqres.in");
         requestSpecBuilder.setContentType(ContentType.JSON);
         var requestSpec=requestSpecBuilder.build();
-        Request = RestAssured.given().spec(requestSpec);
+        Request = given().spec(requestSpec);
     }
 
+    public static void main(String[] args) {
+        RestassuredExtensions restassuredExtensions=new RestassuredExtensions();
+       response= GetOps("/api/users");
+//        response.getBody().prettyPrint();
+        System.out.println(response.getBody().jsonPath().get("data[1].id").toString());
+        System.out.println(response.getBody().jsonPath().get("data[1].email").toString());
+
+        int arr=response.getBody().jsonPath().getInt("data.size()");
+        int id=0;
+        for(int i=1; i<arr; i++){
+            id= Integer.parseInt(response.getBody().jsonPath().get("data["+ i + "].id").toString());
+            if(id==2){
+                System.out.println(response.getBody().jsonPath().get("data["+ i + "].email").toString());
+                break;
+            }
+        }
+    }
 
     public static ResponseOptions<Response> GetOps(String url){
         //Act

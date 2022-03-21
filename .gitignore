@@ -2,5 +2,7 @@
 *.log
 *.idea/vcs.xml
 index.html
-/target
+/target/classes/utilities
+/target/generated-sources
+/target/generated-test-sources
 /test-output
